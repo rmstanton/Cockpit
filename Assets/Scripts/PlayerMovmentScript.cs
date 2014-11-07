@@ -40,15 +40,15 @@ public class PlayerMovmentScript : MonoBehaviour
         
         Vector3 newVel = this.rigidbody.velocity;
 
-        //Debug.Log("Thrust is " + Input.GetAxis("Thrust"));
-        //Debug.Log("YMovement is " + Input.GetAxis("YMovement"));
+        Debug.Log("Thrust is " + Input.GetAxis("Thrust"));
+        Debug.Log("YMovement is " + Input.GetAxis("YMovement"));
 		
 		newVel.x += Input.GetAxis("Thrust") * Mathf.Cos(transform.rotation.eulerAngles.y * Mathf.Deg2Rad) * Mathf.Cos(transform.rotation.eulerAngles.z * Mathf.Deg2Rad);
 		newVel.z -= Input.GetAxis("Thrust") * Mathf.Sin(transform.rotation.eulerAngles.y * Mathf.Deg2Rad) * Mathf.Cos(transform.rotation.eulerAngles.z * Mathf.Deg2Rad);
 		newVel.y += Input.GetAxis("Thrust") * Mathf.Sin(transform.rotation.eulerAngles.z * Mathf.Deg2Rad);
-		//newVel.x += Input.GetAxis("YMovement");
-		//newVel.y += Input.GetAxis("YMovement");
-		//newVel.z += Input.GetAxis("YMovement");
+		newVel.x -= Input.GetAxis("YMovement") * Mathf.Sin(transform.rotation.eulerAngles.z * Mathf.Deg2Rad);
+		newVel.y += Input.GetAxis("YMovement") * Mathf.Cos(transform.rotation.eulerAngles.x * Mathf.Deg2Rad) * Mathf.Cos(transform.rotation.eulerAngles.z * Mathf.Deg2Rad);
+		newVel.z += Input.GetAxis("YMovement") * Mathf.Sin(transform.rotation.eulerAngles.x * Mathf.Deg2Rad) * Mathf.Cos(transform.rotation.eulerAngles.z * Mathf.Deg2Rad);
 		
 		if(newVel.x - rigidbody.velocity.x == 0)
 			canChangeX = true;
@@ -83,10 +83,10 @@ public class PlayerMovmentScript : MonoBehaviour
         
         Vector3 newVel = angularVelocity;
         
-        //Debug.Log("Roll is " + Input.GetAxis("Roll"));
-        //Debug.Log("Yaw is " + Input.GetAxis("Yaw"));
-        //Debug.Log("Pitch is " + Input.GetAxis("Pitch"));
-        //Debug.Log("");
+        Debug.Log("Roll is " + Input.GetAxis("Roll"));
+        Debug.Log("Yaw is " + Input.GetAxis("Yaw"));
+        Debug.Log("Pitch is " + Input.GetAxis("Pitch"));
+        Debug.Log("");
         
         newVel.x += Input.GetAxis("Roll");
         newVel.y += Input.GetAxis("Yaw");
