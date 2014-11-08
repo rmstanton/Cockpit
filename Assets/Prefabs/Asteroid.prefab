@@ -56,6 +56,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   generateReduction: .75
+  chunk: {fileID: 100000, guid: d35ef2d9076ae4511ab729c4dada5467, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

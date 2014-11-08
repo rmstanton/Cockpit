@@ -8,6 +8,8 @@ public class AsteroidShapeGeneratorScript : MonoBehaviour
     private bool[,,] positioning = new bool[2*width+1, 2*width+1, 2*width+1];
     //int counter = 0;
 
+    public GameObject chunk;
+
     // Use this for initialization
     void Start()
     {
@@ -38,7 +40,8 @@ public class AsteroidShapeGeneratorScript : MonoBehaviour
         }
         else
         {
-            GameObject chunk = GameObject.Find("AsteroidChunk");
+            if(chunk == null)
+                chunk = GameObject.Find("AsteroidChunk");
             GameObject child = Instantiate(chunk) as GameObject;
             child.transform.parent = this.transform;
             child.transform.localRotation = Quaternion.identity;
