@@ -19,9 +19,9 @@ public class SpawnAsteroids : MonoBehaviour {
 				Random.Range (-range, range) );
 
 			roids.transform.Rotate(new Vector3(
-				Random.Range (-180, 180),
-				Random.Range (-180, 180),
-				Random.Range (-180, 180)
+				Random.Range (-90, 90),
+				Random.Range (-90, 90),
+				Random.Range (-90, 90)
 				));
 
 			roids.transform.GetComponent<AsteroidMove>().rotate = new Vector3(Random.Range (-5, 5),

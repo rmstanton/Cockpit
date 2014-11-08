@@ -101,8 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1f7d84a34eb9454789ae56c1f8a3afc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aCount: 20
-  range: 20
+  aCount: 50
+  range: 500
   roids: {fileID: 100014, guid: f03c379813bb4594481b9afb6649748c, type: 2}
 --- !u!4 &87126979
 Transform:
