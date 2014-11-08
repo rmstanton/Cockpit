@@ -170,6 +170,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: ef956b3723ba14c3fbed2c3c6cd5a3e9, type: 2}
+      propertyPath: generateReduction
+      value: .949999988
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ef956b3723ba14c3fbed2c3c6cd5a3e9, type: 2}
   m_RootGameObject: {fileID: 1138158282}
@@ -288,7 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f09be1e7fc109443682a913fa95e6dd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generateReduction: .75
+  generateReduction: .949999988
   chunk: {fileID: 100000, guid: d35ef2d9076ae4511ab729c4dada5467, type: 2}
 --- !u!4 &1138158284
 Transform:
