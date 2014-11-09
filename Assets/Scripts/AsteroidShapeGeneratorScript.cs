@@ -30,7 +30,7 @@ public class AsteroidShapeGeneratorScript : MonoBehaviour
 
     IEnumerator Generate(int x, int y, int z, float generateChance)
     {
-        if(generateReduction - generateChance > 0.7f)
+        if(generateReduction - generateChance > 0.6f)
             yield return new WaitForSeconds(Random.Range(0.0f, 2.0f) * (generateReduction - generateChance));
         if(x > width || x < -1*width || y > width || y < -1*width || z > width || z < -1*width)
         {
