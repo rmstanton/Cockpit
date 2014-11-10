@@ -10,7 +10,8 @@ public class AsteroidShapeGeneratorScript : MonoBehaviour
 	
 	public GameObject chunk;
 	
-	private static Limiter Limit;
+	private static int limiter = 0;
+	private static float lastUpdate = 0;
 	
 	// Use this for initialization
 	void Start()
@@ -21,8 +22,7 @@ public class AsteroidShapeGeneratorScript : MonoBehaviour
 			generateReduction = 0.0f;
 		StartCoroutine(Generate(0, 0, 0, generateReduction));
 		StartCoroutine(UpdateMass());
-		if(Limit == null)
-			Limit = new Limiter();
+		StartCoroutine(ResetLimiter());
 	}
 	
 	// Update is called once per frame
@@ -36,12 +36,12 @@ public class AsteroidShapeGeneratorScript : MonoBehaviour
 	{
 		while(true)
 		{
-			if(Limit.NeedToLimit())
+			if(limiter >= 100)
 				yield return new WaitForSeconds(Random.Range(0.0f, 6.0f) * (generateReduction - generateChance));
 			else
 				break;
 		}
-		Limit.AddToLimit();
+		limiter++;
 		if(x > width || x < -1*width || y > width || y < -1*width || z > width || z < -1*width)
 		{
 		}
@@ -120,5 +120,16 @@ public class AsteroidShapeGeneratorScript : MonoBehaviour
 		else
 			this.rigidbody.mass = 1;
 		StartCoroutine(UpdateMass());
+	}
+	
+	IEnumerator ResetLimiter()
+	{
+		yield return new WaitForSeconds(0.10f);
+		if(Time.time - lastUpdate > 0.1f)
+		{
+			limiter = 0;
+			lastUpdate = Time.time;
+		}
+		ResetLimiter();
 	}
 }
