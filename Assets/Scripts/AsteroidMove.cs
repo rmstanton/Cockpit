@@ -8,7 +8,7 @@ public class AsteroidMove : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Player = GameObject.Find ("Main Camera");
+		Player = GameObject.Find ("Player");
 	}
 	
 	// Update is called once per frame
