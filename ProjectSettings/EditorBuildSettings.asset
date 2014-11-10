@@ -7,3 +7,5 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 0
     path: Assets/TestScenes/OculusTesting.unity
+  - enabled: 1
+    path: Assets/MainMiner.unity

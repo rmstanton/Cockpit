@@ -27,6 +27,11 @@ public class PlayerMovmentScript : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+		for(int i=1; i<=20; i++)
+		{
+			if(Input.GetAxis(i + "") != 0)
+				Debug.Log(i + ": " + Input.GetAxis(i + ""));
+		}
 	}
 	
 	void FixedUpdate()
