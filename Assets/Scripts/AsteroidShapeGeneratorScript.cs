@@ -36,7 +36,7 @@ public class AsteroidShapeGeneratorScript : MonoBehaviour
 	{
 		while(true)
 		{
-			if(limiter >= 100)
+			if(limiter >= 150)
 				yield return new WaitForSeconds(Random.Range(0.0f, 6.0f) * (generateReduction - generateChance));
 			else
 				break;
@@ -124,12 +124,12 @@ public class AsteroidShapeGeneratorScript : MonoBehaviour
 	
 	IEnumerator ResetLimiter()
 	{
-		yield return new WaitForSeconds(0.10f);
-		if(Time.time - lastUpdate > 0.1f)
+		yield return new WaitForSeconds(0.20f);
+		if(Time.time - lastUpdate > 0.2f)
 		{
 			limiter = 0;
 			lastUpdate = Time.time;
 		}
-		ResetLimiter();
+		StartCoroutine(ResetLimiter());
 	}
 }

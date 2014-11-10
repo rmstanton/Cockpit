@@ -47,8 +47,8 @@ public class PlayerMovmentScript : MonoBehaviour
 		//newVel.x += Input.GetAxis("Thrust") * Mathf.Cos(transform.rotation.eulerAngles.y * Mathf.Deg2Rad) * Mathf.Cos(transform.rotation.eulerAngles.z * Mathf.Deg2Rad)/dampener;
 		//newVel.z -= Input.GetAxis("Thrust") * Mathf.Sin(transform.rotation.eulerAngles.y * Mathf.Deg2Rad) * Mathf.Cos(transform.rotation.eulerAngles.z * Mathf.Deg2Rad)/dampener;
 		//newVel.y += Input.GetAxis("Thrust") * Mathf.Sin(transform.rotation.eulerAngles.z * Mathf.Deg2Rad)/dampener;
-		newVel += Input.GetAxis("Thrust") * transform.TransformDirection(Vector3.forward);
-		newVel += Input.GetAxis("YMovement") * transform.TransformDirection(Vector3.up);
+		newVel += Input.GetAxis("Thrust") * transform.TransformDirection(Vector3.forward)/dampener;
+		newVel += Input.GetAxis("YMovement") * transform.TransformDirection(Vector3.up)/dampener;
 		//newVel.x -= Input.GetAxis("YMovement") * Mathf.Sin(transform.rotation.eulerAngles.z * Mathf.Deg2Rad)/dampener;
 		//newVel.y += Input.GetAxis("YMovement") * Mathf.Cos(transform.rotation.eulerAngles.x * Mathf.Deg2Rad) * Mathf.Cos(transform.rotation.eulerAngles.z * Mathf.Deg2Rad)/dampener;
 		//newVel.z += Input.GetAxis("YMovement") * Mathf.Sin(transform.rotation.eulerAngles.x * Mathf.Deg2Rad) * Mathf.Cos(transform.rotation.eulerAngles.z * Mathf.Deg2Rad)/dampener;
