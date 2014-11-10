@@ -13,8 +13,8 @@ public class AsteroidMove : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (rotate != null)
-			transform.Rotate (rotate);
+		/*if (rotate != null)
+			transform.Rotate (rotate);*/
 
 		if (Vector3.Distance (this.transform.position, Player.transform.position) > 500) {
 			Destroy(this.gameObject);		

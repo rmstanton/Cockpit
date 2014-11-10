@@ -30,9 +30,13 @@ public class SpawnAsteroids : MonoBehaviour {
 				));
 
 
-			roids.transform.GetComponent<AsteroidMove>().rotate = new Vector3(Random.Range (-initRotation, initRotation),
+			/*roids.transform.GetComponent<AsteroidMove>().rotate = new Vector3(Random.Range (-initRotation, initRotation),
 			                                                                  Random.Range (-initRotation, initRotation),
-			                                                                  Random.Range (-initRotation, initRotation));
+			                                                                  Random.Range (-initRotation, initRotation));*/
+
+			roids.rigidbody.angularVelocity = new Vector3(Random.Range (-initRotation, initRotation),
+			                                              Random.Range (-initRotation, initRotation),
+			                                              Random.Range (-initRotation, initRotation));
 		}
 	}
 	
@@ -45,9 +49,9 @@ public class SpawnAsteroids : MonoBehaviour {
 				Random.Range (-range, range),
 				Random.Range (-range, range) );
 
-			roid.rigidbody.velocity = new Vector3(100,
-			                                      0,
-			                                      0);
+			roid.rigidbody.velocity = new Vector3(Random.Range (-100, 100),
+			                                      Random.Range (-100, 100),
+			                                      Random.Range (-100, 100));
 		}
 
 			
