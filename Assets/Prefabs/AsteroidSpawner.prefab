@@ -43,10 +43,10 @@ MonoBehaviour:
   range: 100
   roidsOrig: {fileID: 100000, guid: 81c29601ad78ea641a59e68acb8c611e, type: 2}
   spawnDistance: 250
-  initRotation: 1
-  testTargeted: 0
-  testSent: 0
-  testDest: {x: 0, y: 0, z: 0}
+  avgSpawnsPerSecond: 10
+  moverSpawnRange: 250
+  moverMaxSpeed: 100
+  initRotation: .0500000007
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

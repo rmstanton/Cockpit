@@ -106,10 +106,10 @@ MonoBehaviour:
   range: 100
   roidsOrig: {fileID: 100000, guid: 81c29601ad78ea641a59e68acb8c611e, type: 2}
   spawnDistance: 250
-  initRotation: 1
-  testTargeted: 0
-  testSent: 0
-  testDest: {x: 0, y: 0, z: 0}
+  avgSpawnsPerSecond: 10
+  moverSpawnRange: 250
+  moverMaxSpeed: 100
+  initRotation: .0500000007
 --- !u!4 &170116329
 Transform:
   m_ObjectHideFlags: 0
@@ -338,6 +338,10 @@ Prefab:
     - target: {fileID: 400000, guid: 8cec8dcc86f3db54d87ef4f3af7292d7, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 8cec8dcc86f3db54d87ef4f3af7292d7, type: 2}
+      propertyPath: avgSpawnsPerSecond
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8cec8dcc86f3db54d87ef4f3af7292d7, type: 2}
