@@ -17,6 +17,9 @@ public class SandRoutput : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		
+		//output = gameObject.GetComponent<SandRoutput> ();
+		speed = this.rigidbody.velocity.magnitude;
+		rotation = this.rigidbody.angularVelocity.magnitude;
 	}
 }

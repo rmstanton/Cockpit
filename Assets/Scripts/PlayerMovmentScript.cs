@@ -18,7 +18,6 @@ public class PlayerMovmentScript : MonoBehaviour
 	public float angularDampener = 60.0f;
 	public float dampener = 60.0f;
 
-	private SandRoutput output;
 	// Use this for initialization
 	void Start()
 	{
@@ -28,9 +27,6 @@ public class PlayerMovmentScript : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		output = gameObject.GetComponent<SandRoutput> ();
-		output.speed = this.rigidbody.velocity.magnitude;
-		output.rotation = this.rigidbody.angularVelocity.magnitude;
 	}
 	
 	void FixedUpdate()

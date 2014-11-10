@@ -61,7 +61,7 @@ public class OVRGameView
 
 	static void OnUpdate()
 	{
-		if (OVRManager.instance == null)
+		//if (OVRManager.instance == null)
 			return;
 
 		EditorWindow gameView = GetMainGameView();
@@ -72,7 +72,7 @@ public class OVRGameView
 			{
 				cachedPosition = pos;
 
-				OVRManager.display.SetViewport((int)pos.x, (int)pos.y, (int)pos.width, (int)pos.height);
+				//OVRManager.display.SetViewport((int)pos.x, (int)pos.y, (int)pos.width, (int)pos.height);
 			}
 		}
 	}
