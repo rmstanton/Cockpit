@@ -101,9 +101,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1f7d84a34eb9454789ae56c1f8a3afc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aCount: 20
-  range: 20
-  roids: {fileID: 100014, guid: f03c379813bb4594481b9afb6649748c, type: 2}
+  aCount: 50
+  range: 500
+  roidsOrig: {fileID: 100000, guid: 81c29601ad78ea641a59e68acb8c611e, type: 2}
+  initRotation: 2
 --- !u!4 &170116329
 Transform:
   m_ObjectHideFlags: 0
@@ -215,6 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dontPassZero: 1
   angularDampener: 60
+  dampener: 60
 --- !u!54 &716220904
 Rigidbody:
   m_ObjectHideFlags: 0
