@@ -28,8 +28,7 @@ public class AsteroidShapeGeneratorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if(counter++ % 100 == 0)
-            //UpdateMass();
+    
     }
 
     IEnumerator Generate(int x, int y, int z, float generateChance)
@@ -59,38 +58,23 @@ public class AsteroidShapeGeneratorScript : MonoBehaviour
 
             SetChild(x, y, z, true);
         
-            if(Random.Range(0.0f, 1.0f) < generateChance)
-                StartCoroutine(Generate(x + 1, y, z, generateChance * generateReduction));
-            //if(generateReduction > 0.8f)
-                //yield return new WaitForSeconds(Random.Range(0.0f, 0.05f));
-            if(Random.Range(0.0f, 1.0f) < generateChance)
-                StartCoroutine(Generate(x - 1, y, z, generateChance * generateReduction));
-            //if(generateReduction > 0.8f)
-                //yield return new WaitForSeconds(Random.Range(0.0f, 0.05f));
-            if(Random.Range(0.0f, 1.0f) < generateChance)
-                StartCoroutine(Generate(x, y + 1, z, generateChance * generateReduction));
-            //if(generateReduction > 0.8f)
-                //yield return new WaitForSeconds(Random.Range(0.0f, 0.05f));
-            if(Random.Range(0.0f, 1.0f) < generateChance)
-                StartCoroutine(Generate(x, y - 1, z, generateChance * generateReduction));
-            //if(generateReduction > 0.8f)
-                //yield return new WaitForSeconds(Random.Range(0.0f, 0.05f));
-            if(Random.Range(0.0f, 1.0f) < generateChance)
-                StartCoroutine(Generate(x, y, z + 1, generateChance * generateReduction));
-            //if(generateReduction > 0.8f)
-                //yield return new WaitForSeconds(Random.Range(0.0f, 0.05f));
-            if(Random.Range(0.0f, 1.0f) < generateChance)
-                StartCoroutine(Generate(x, y, z - 1, generateChance * generateReduction));
-        }
-        yield return new WaitForSeconds(0);
-    }
+	        if(Random.Range(0.0f, 1.0f) < generateChance)
+	            Generate(x+1, y, z, generateChance * generateReduction);
+	        if(Random.Range(0.0f, 1.0f) < generateChance)
+	            Generate(x-1, y, z, generateChance * generateReduction);
+	        if(Random.Range(0.0f, 1.0f) < generateChance)
+	            Generate(x, y+1, z, generateChance * generateReduction);
+	        if(Random.Range(0.0f, 1.0f) < generateChance)
+	            Generate(x, y-1, z, generateChance * generateReduction);
+	        if(Random.Range(0.0f, 1.0f) < generateChance)
+	            Generate(x, y, z+1, generateChance * generateReduction);
+	        if(Random.Range(0.0f, 1.0f) < generateChance)
+	            Generate(x, y, z-1, generateChance * generateReduction);
+	    }
+	}
 
     bool HasChild(int x, int y, int z)
     {
-        if(x > width || x < -1*width || y > width || y < -1*width || z > width || z < -1*width)
-            return false;
-        return positioning[x + width, y + width, z + width];
-        /*
         foreach(Transform child in transform)
         {
             if(child.transform.position.x == x
@@ -98,7 +82,7 @@ public class AsteroidShapeGeneratorScript : MonoBehaviour
             && child.transform.position.z == z)
                 return false;
         }
-        return false;*/
+        return false;
     }
 
     void SetChild(int x, int y, int z, bool set)
