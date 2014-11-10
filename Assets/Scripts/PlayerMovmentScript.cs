@@ -31,7 +31,7 @@ public class PlayerMovmentScript : MonoBehaviour
     }
 
     void FixedUpdate()
-    {
+	{
         AdjustVelocity();
         AdjustRotation();
     }
@@ -44,12 +44,14 @@ public class PlayerMovmentScript : MonoBehaviour
         //Debug.Log("Thrust is " + Input.GetAxis("Thrust"));
         //Debug.Log("YMovement is " + Input.GetAxis("YMovement"));
 		
-		newVel.x += Input.GetAxis("Thrust") * Mathf.Cos(transform.rotation.eulerAngles.y * Mathf.Deg2Rad) * Mathf.Cos(transform.rotation.eulerAngles.z * Mathf.Deg2Rad)/dampener;
-        newVel.z -= Input.GetAxis("Thrust") * Mathf.Sin(transform.rotation.eulerAngles.y * Mathf.Deg2Rad) * Mathf.Cos(transform.rotation.eulerAngles.z * Mathf.Deg2Rad)/dampener;
-        newVel.y += Input.GetAxis("Thrust") * Mathf.Sin(transform.rotation.eulerAngles.z * Mathf.Deg2Rad)/dampener;
-        newVel.x -= Input.GetAxis("YMovement") * Mathf.Sin(transform.rotation.eulerAngles.z * Mathf.Deg2Rad)/dampener;
-        newVel.y += Input.GetAxis("YMovement") * Mathf.Cos(transform.rotation.eulerAngles.x * Mathf.Deg2Rad) * Mathf.Cos(transform.rotation.eulerAngles.z * Mathf.Deg2Rad)/dampener;
-        newVel.z += Input.GetAxis("YMovement") * Mathf.Sin(transform.rotation.eulerAngles.x * Mathf.Deg2Rad) * Mathf.Cos(transform.rotation.eulerAngles.z * Mathf.Deg2Rad)/dampener;
+		//newVel.x += Input.GetAxis("Thrust") * Mathf.Cos(transform.rotation.eulerAngles.y * Mathf.Deg2Rad) * Mathf.Cos(transform.rotation.eulerAngles.z * Mathf.Deg2Rad)/dampener;
+        //newVel.z -= Input.GetAxis("Thrust") * Mathf.Sin(transform.rotation.eulerAngles.y * Mathf.Deg2Rad) * Mathf.Cos(transform.rotation.eulerAngles.z * Mathf.Deg2Rad)/dampener;
+        //newVel.y += Input.GetAxis("Thrust") * Mathf.Sin(transform.rotation.eulerAngles.z * Mathf.Deg2Rad)/dampener;
+        newVel += Input.GetAxis("Thrust") * transform.TransformDirection(Vector3.forward);
+        newVel += Input.GetAxis("YMovement") * transform.TransformDirection(Vector3.up);
+        //newVel.x -= Input.GetAxis("YMovement") * Mathf.Sin(transform.rotation.eulerAngles.z * Mathf.Deg2Rad)/dampener;
+        //newVel.y += Input.GetAxis("YMovement") * Mathf.Cos(transform.rotation.eulerAngles.x * Mathf.Deg2Rad) * Mathf.Cos(transform.rotation.eulerAngles.z * Mathf.Deg2Rad)/dampener;
+        //newVel.z += Input.GetAxis("YMovement") * Mathf.Sin(transform.rotation.eulerAngles.x * Mathf.Deg2Rad) * Mathf.Cos(transform.rotation.eulerAngles.z * Mathf.Deg2Rad)/dampener;
 		
 		if(newVel.x - rigidbody.velocity.x == 0)
 			canChangeX = true;
@@ -89,31 +91,31 @@ public class PlayerMovmentScript : MonoBehaviour
         //Debug.Log("Pitch is " + Input.GetAxis("Pitch"));
         //Debug.Log("");
         
-        newVel.x += Input.GetAxis("Roll");
+        newVel.x += Input.GetAxis("Pitch");
         newVel.y += Input.GetAxis("Yaw");
-		newVel.z += Input.GetAxis("Pitch");
+		newVel.z += Input.GetAxis("Roll");
 		
 		if(newVel.x - angularVelocity.x == 0)
-			canChangeRoll = true;
+			canChangePitch = true;
 		if(newVel.y - angularVelocity.y == 0)
 			canChangeYaw = true;
 		if(newVel.z - angularVelocity.z == 0)
-			canChangePitch = true;
+			canChangeRoll = true;
         
         if(dontPassZero)
         {
 			if((angularVelocity.x < 0 && newVel.x > 0) || (angularVelocity.x > 0 && newVel.x < 0))
-				canChangeRoll = false;
+				canChangePitch = false;
 			if((angularVelocity.y < 0 && newVel.y > 0) || (angularVelocity.y > 0 && newVel.y < 0))
 				canChangeYaw = false;
 			if((angularVelocity.z < 0 && newVel.z > 0) || (angularVelocity.z > 0 && newVel.z < 0))
-				canChangePitch = false;
+				canChangeRoll = false;
         }
-		if(!canChangeRoll)
+		if(!canChangePitch)
 			newVel.x = 0;
 		if(!canChangeYaw)
 			newVel.y = 0;
-		if(!canChangePitch)
+		if(!canChangeRoll)
 			newVel.z = 0;
         
         
