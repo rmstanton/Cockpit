@@ -9,6 +9,8 @@ public class AsteroidShapeGeneratorScript : MonoBehaviour
     //int counter = 0;
 
     public GameObject chunk;
+    
+    private static Limiter Limit;
 
     // Use this for initialization
     void Start()
@@ -19,6 +21,8 @@ public class AsteroidShapeGeneratorScript : MonoBehaviour
             generateReduction = 0.0f;
         StartCoroutine(Generate(0, 0, 0, generateReduction));
         StartCoroutine(UpdateMass());
+        if(Limit == null)
+			Limit = new Limiter();
     }
     
     // Update is called once per frame
@@ -30,10 +34,14 @@ public class AsteroidShapeGeneratorScript : MonoBehaviour
 
     IEnumerator Generate(int x, int y, int z, float generateChance)
 	{
-		if(generateReduction - generateChance > 0.6f)
-			yield return new WaitForSeconds(Random.Range(0.0f, 6.0f) * (generateReduction - generateChance));
-		else if(generateReduction - generateChance > 0.3f)
-			yield return new WaitForSeconds(Random.Range(0.0f, 0.5f) * (generateReduction - generateChance));
+		while(true)
+		{
+			if(Limit.NeedToLimit())
+				yield return new WaitForSeconds(Random.Range(0.0f, 6.0f) * (generateReduction - generateChance));
+			else
+				break;
+		}
+		Limit.AddToLimit();
         if(x > width || x < -1*width || y > width || y < -1*width || z > width || z < -1*width)
         {
         }
@@ -49,7 +57,7 @@ public class AsteroidShapeGeneratorScript : MonoBehaviour
             child.transform.localRotation = Quaternion.identity;
             child.transform.localPosition = new Vector3(x, y, z);
 
-            SetChild(x, y, z);
+            SetChild(x, y, z, true);
         
             if(Random.Range(0.0f, 1.0f) < generateChance)
                 StartCoroutine(Generate(x + 1, y, z, generateChance * generateReduction));
@@ -93,7 +101,7 @@ public class AsteroidShapeGeneratorScript : MonoBehaviour
         return false;*/
     }
 
-    void SetChild(int x, int y, int z, bool set = true)
+    void SetChild(int x, int y, int z, bool set)
     {
         positioning[x + width, y + width, z + width] = set;
     }
