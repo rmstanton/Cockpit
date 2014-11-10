@@ -13,6 +13,8 @@ public class AsteroidShapeGeneratorScript : MonoBehaviour
 	private static int limiter = 0;
 	private static float lastUpdate = 0;
 	
+	private int personalCheck = 0;
+	
 	// Use this for initialization
 	void Start()
 	{
@@ -36,8 +38,9 @@ public class AsteroidShapeGeneratorScript : MonoBehaviour
 	{
 		while(true)
 		{
-			if(limiter >= 150)
-				yield return new WaitForSeconds(Random.Range(0.0f, 6.0f) * (generateReduction - generateChance));
+			personalCheck++;
+			if(limiter >= 75)
+				yield return new WaitForSeconds(Random.Range(0.5f, 10.0f) * (generateReduction - generateChance));
 			else
 				break;
 		}
@@ -124,12 +127,16 @@ public class AsteroidShapeGeneratorScript : MonoBehaviour
 	
 	IEnumerator ResetLimiter()
 	{
-		yield return new WaitForSeconds(0.20f);
-		if(Time.time - lastUpdate > 0.2f)
+		yield return new WaitForSeconds(Random.Range(0.15f, 0.5f));
+		if(Time.time - lastUpdate > 0.15f)
 		{
 			limiter = 0;
 			lastUpdate = Time.time;
 		}
-		StartCoroutine(ResetLimiter());
+		if(personalCheck != 0)
+		{
+			personalCheck = 0;
+			StartCoroutine(ResetLimiter());
+		}
 	}
 }
