@@ -13,7 +13,7 @@ public class PlayerMovmentScript : MonoBehaviour
 	private bool canChangePitch = true;
 	private bool canChangeRoll = true;
 	
-	private Vector3 angularVelocity = new Vector3(0,0,0);
+	public Vector3 angularVelocity = new Vector3(0,0,0);
 	
 	public float angularDampener = 60.0f;
 	public float dampener = 60.0f;
@@ -123,6 +123,10 @@ public class PlayerMovmentScript : MonoBehaviour
 		if(!canChangeRoll)
 			newVel.z = 0;
 		
+		
+		if(newVel.x > 50)newVel.x = 50;
+		if(newVel.y > 50)newVel.y = 50;
+		if(newVel.z > 50)newVel.z = 50;
 		
 		angularVelocity = newVel;
 		
