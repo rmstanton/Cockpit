@@ -6,7 +6,7 @@ public class PlayerMineScript : MonoBehaviour {
 	float start, useTime;
 	bool ready;
 	GameObject previous = null; 				//previous target
-	float shipStores;
+	public float shipStores;
 	int counter = 0;
 
 	// Use this for initialization

@@ -29,6 +29,7 @@ GameObject:
   - 65: {fileID: 6500002}
   - 114: {fileID: 11400000}
   - 54: {fileID: 5400000}
+  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: MotherShip
   m_TagString: Untagged
@@ -615,7 +616,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 7, y: 10, z: 10}
@@ -995,6 +996,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomHit: 0
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a34f1a7ac883f4a80a470c9590507b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winCount: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
