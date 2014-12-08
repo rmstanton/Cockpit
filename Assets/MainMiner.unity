@@ -4790,6 +4790,10 @@ Prefab:
       propertyPath: end
       value: 
       objectReference: {fileID: 8300000, guid: e7359442b809ee345a5380e67593da76, type: 3}
+    - target: {fileID: 11400000, guid: 1536d15a5f2920140bba612d5da90748, type: 2}
+      propertyPath: asrc
+      value: 
+      objectReference: {fileID: 1224559365}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1536d15a5f2920140bba612d5da90748, type: 2}
   m_RootGameObject: {fileID: 1224559357}
@@ -5726,7 +5730,7 @@ MonoBehaviour:
   angularVelocity: {x: 0, y: 0, z: 0}
   angularDampener: 100
   dampener: 40
-  asrc: {fileID: 0}
+  asrc: {fileID: 1224559365}
 --- !u!114 &1224559360
 MonoBehaviour:
   m_ObjectHideFlags: 0
