@@ -7,6 +7,7 @@ public class PlayerMineScript : MonoBehaviour {
 	bool ready;
 	GameObject previous = null; 				//previous target
 	float shipStores;
+	int counter = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -18,6 +19,10 @@ public class PlayerMineScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+	}
+
+	void FixedUpdate(){
 		if (Input.GetAxis ("Fire1") > 0) {
 			shootBangs ();	
 		} else {
@@ -34,42 +39,46 @@ public class PlayerMineScript : MonoBehaviour {
 		Ray pew = new Ray (transform.position, transform.TransformDirection (Vector3.forward));
 		if (Physics.Raycast (pew, out hit, range, layerMask)) 
 		{
-			Debug.Log ("Mining a thing:" + hit.collider.transform.tag);
+			Debug.Log ("Mining a thing:" + hit.collider.transform.tag +" counter: " + counter);
+			//Debug.Log (previous == null ? "previous is null" : "previous not null");
 			thing = hit.collider.transform.gameObject;
 
 			if (previous == null || thing != previous)
 			{
+				//Debug.Log("previous is null || thing != previous - counter: " + counter);
 				ready = false;
 				previous = thing;
-				delay(previous);
+				StartCoroutine(delay(previous));
 
 			} else if(ready){
-				//increment storage
+				if (counter % 5 == 0)shipStores++;
+				Debug.Log("Current stores:" + shipStores + " - counter: " + counter);
 				//thing.reduce();
 
 			}
 
 		} 
 		else{
-
+			
+			//Debug.Log("else - counter: " + counter);
 			thing = null;
 			ready = false;
 		}
+		counter++;
 
 
 	}
 
 
 	IEnumerator delay(GameObject prev){
+		int persCounter = counter;
+		//Debug.Log ("Delay init: " + persCounter);
 		yield return new WaitForSeconds(0.5f);
+		//Debug.Log ("Delay aft: " + persCounter);
 		if (previous == prev){
+			//Debug.Log ("Delay if: " + persCounter);
 			//prev = toDelay;
 			ready = true;
 		}
-
-
-
 	}
-
-
 }
