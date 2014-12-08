@@ -51,9 +51,11 @@ public class PlayerMineScript : MonoBehaviour {
 				StartCoroutine(delay(previous));
 
 			} else if(ready){
-				if (counter % 5 == 0)shipStores++;
+				if (counter % 5 == 0){
+					shipStores++; 
+					thing.GetComponent<chunkHealth>().health--;
+				}
 				Debug.Log("Current stores:" + shipStores + " - counter: " + counter);
-				//thing.reduce();
 
 			}
 

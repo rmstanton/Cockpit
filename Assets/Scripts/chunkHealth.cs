@@ -4,7 +4,7 @@ using System.Collections;
 public class chunkHealth : MonoBehaviour {
 	int Durability;
 	GameObject ship;
-	int health;
+	public int health;
 	// Use this for initialization
 	void Start () {
 		health = 100;
@@ -13,6 +13,11 @@ public class chunkHealth : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (health <= 0) {
+			gameObject.active = false;
+			Destroy (gameObject);
+		}
 	}
+
+
 }
