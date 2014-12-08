@@ -24,7 +24,7 @@ public class PlayerMovmentScript : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-		
+		asrc = gameObject.GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
