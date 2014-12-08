@@ -17,6 +17,9 @@ public class PlayerMovmentScript : MonoBehaviour
 	
 	public float angularDampener = 60.0f;
 	public float dampener = 60.0f;
+	
+	public AudioSource asrc;
+	bool thrusting = false;
 
 	// Use this for initialization
 	void Start()
@@ -36,8 +39,13 @@ public class PlayerMovmentScript : MonoBehaviour
 	
 	void FixedUpdate()
 	{
+		thrusting = false;
 		AdjustVelocity();
 		AdjustRotation();
+		if(thrusting)
+			asrc.volume = .9f;
+		else
+			asrc.volume = .1f;
 	}
 	
 	private void AdjustVelocity()
@@ -82,6 +90,9 @@ public class PlayerMovmentScript : MonoBehaviour
 		if(!canChangeZ)
 			newVel.z = 0;
 		
+		if(rigidbody.velocity.x - newVel.x != 0)thrusting = true;
+		if(rigidbody.velocity.y - newVel.y != 0)thrusting = true;
+		if(rigidbody.velocity.z - newVel.z != 0)thrusting = true;
 		
 		this.rigidbody.velocity = newVel;
 	}
@@ -127,6 +138,10 @@ public class PlayerMovmentScript : MonoBehaviour
 		if(newVel.x > 50)newVel.x = 50;
 		if(newVel.y > 50)newVel.y = 50;
 		if(newVel.z > 50)newVel.z = 50;
+		
+		if(angularVelocity.x - newVel.x != 0)thrusting = true;
+		if(angularVelocity.y - newVel.y != 0)thrusting = true;
+		if(angularVelocity.z - newVel.z != 0)thrusting = true;
 		
 		angularVelocity = newVel;
 		
